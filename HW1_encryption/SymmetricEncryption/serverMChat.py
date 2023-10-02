@@ -126,14 +126,14 @@ while True:
                 # But don't sent it to sender
                 if client_socket != notified_socket:
                     
-                    port = (str(notified_socket.getpeername()[1])).encode('utf-8')
+                    # port = (str(notified_socket.getpeername()[1])).encode('utf-8')
                     # print(port)
                     # print(f'sender port = {port}')
                     # Send user and message (both with their headers)
                     # We are reusing here message header sent by sender, and saved username header send by user when he connected
                     # a = user['header'] + user['data'] + message['header'] + message['data'] + port
                     # print(f'LOG = {a}')
-                    client_socket.send(user['header'] + user['data'] + message['header'] + message['data'] + port)
+                    client_socket.send(user['header'] + user['data'] + message['header'] + message['data'])
 
     # It's not really necessary to have this, but will handle some socket exceptions just in case
     for notified_socket in exception_sockets:
